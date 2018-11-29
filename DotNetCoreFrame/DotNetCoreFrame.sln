@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreFrame", "DotNetCoreFrame\DotNetCoreFrame.csproj", "{D10E0C70-87FB-4B07-896E-71C98C907E83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreFrame", "DotNetCoreFrame\DotNetCoreFrame.csproj", "{D10E0C70-87FB-4B07-896E-71C98C907E83}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceCore", "ServiceCore\ServiceCore.csproj", "{FBEEA69C-8EE1-459F-A83E-2119091F9908}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D10E0C70-87FB-4B07-896E-71C98C907E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D10E0C70-87FB-4B07-896E-71C98C907E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D10E0C70-87FB-4B07-896E-71C98C907E83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBEEA69C-8EE1-459F-A83E-2119091F9908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEEA69C-8EE1-459F-A83E-2119091F9908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBEEA69C-8EE1-459F-A83E-2119091F9908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBEEA69C-8EE1-459F-A83E-2119091F9908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
