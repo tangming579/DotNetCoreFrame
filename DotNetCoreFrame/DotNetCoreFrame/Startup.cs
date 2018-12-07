@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -9,14 +10,26 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ServiceCore;
 
 namespace DotNetCoreFrame
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        //public Startup(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //}
+
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile(Path.Combine("configs", "appsettings.json"), optional: false, reloadOnChange: true)
+                .AddJsonFile(Path.Combine("configs", $"appsettings.{env.EnvironmentName}.json"), optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+            PublicDatas.Configuration = Configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -31,13 +44,18 @@ namespace DotNetCoreFrame
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDirectoryBrowser();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+            //env.ConfigureNLog(Path.Combine("configs", "nlog.config"));
+            PublicDatas.ServiceProvider = app.ApplicationServices;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -58,6 +76,9 @@ namespace DotNetCoreFrame
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            ConstsConf.WWWRootPath = env.WebRootPath;
+            RestmethodManager.Load();
         }
     }
 }

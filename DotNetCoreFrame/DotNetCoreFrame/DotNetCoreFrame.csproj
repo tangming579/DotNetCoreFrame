@@ -7,10 +7,18 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="NLog" Version="4.5.11" />
+    <PackageReference Include="NLog.Config" Version="4.5.11" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceCore\ServiceCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="configs\" />
+    <Folder Include="Files\" />
   </ItemGroup>
 
 </Project>
