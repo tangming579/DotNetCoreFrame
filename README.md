@@ -35,7 +35,7 @@ DotNetCoreFrame
 │ 
 |
 |——Properties
-|		└──launchSettings.json  Core配置
+|        └──launchSettings.json  Core配置
 |
 ├─Methods-api        API接口服务
 │ 
